@@ -25,7 +25,7 @@ SECRET_KEY = 'asfbfn=sue((ffkd@efarekhi!z8)teq#+=qbf$*a1efm17^_g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blogger-web-app.herokuapp.com',]
+ALLOWED_HOSTS = ['blogger-web-app.herokuapp.com','localhost']
 
 STATIC_URL = '/static/'
 

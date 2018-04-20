@@ -1,5 +1,19 @@
-<h1>{{ blog.blog_title }}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ blog.blog_title }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
+</head>
+<body>
+	<div class="container">
 
-<h3>{{ blog.blog_content }}</h3>
+		<h1 align="center" class="display-4">{{ blog.blog_title }}</h1>
 
-<h3>{{ blog.blog_author }}</h3>
+		<p>{{ blog.blog_content }}</p>
+
+		<p class="text-secondary">{{ blog.blog_author }}</p>
+	</div>
+</body>
+</html>

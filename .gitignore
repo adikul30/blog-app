@@ -102,3 +102,4 @@ ENV/
 
 bin/
 include/
+.DS_Store

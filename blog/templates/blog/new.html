@@ -2,13 +2,18 @@
 <html>
 <head>
 	<title>New Blog</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans:300">
+
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
 	<div class="container">
-		<h4 class="display-4">Start a new blog</h4>
+		<br>
+		<h1>Start a new blog</h1>
+		<br>
 		<div class="card">
 			<div class="card-body">
 				<form action="{% url 'blog:new' %}" method="post">
@@ -26,7 +31,7 @@
 						<input class="form-control" type="text" name="author" id="author">
 					</div>
 					<div align="center">
-						<input type="submit" class="btn btn-primary" value="Save">
+						<input type="submit" class="btn btn-primary btn-lg" value="Save">
 					</div>
 				</form>
 			</div>

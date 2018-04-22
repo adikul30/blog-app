@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>blogger - the boring blog app</title>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans">
+
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  -->
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 </head>
@@ -17,24 +19,27 @@
 
 	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-<!-- 		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-		      </li> -->
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="{% url 'blog:new' %}">
-		    		<button class="btn btn-outline-success my-2 my-sm-0" type="button">New blog</button>
+		    		<button class="btn btn-outline-secondary my-2 my-sm-0" type="button">New blog</button>
 		    	</a>
 		    </form>
 		</div>
 	</nav>
 	<div class="container">
-		<div align="center">
-			<div class="card">
+		<div>
+			<div>
+				<br>
+				<h1>All Blogs</h1>
+				<br>
 				{% if latest_blogs %}
 				    <ul class="list-group list-group-flush">
 				    {% for blog in latest_blogs %}
-				        <li class="list-group-item"><a href="{% url 'blog:detail' blog.id %}">{{ blog.blog_title }}</a></li>
+				    	<div>
+					        <li class="list-group-item"><a href="{% url 'blog:detail' blog.id %}">{{ blog.blog_title }}</a></li>
+					        <!-- <li class="list-group-item">{{ blog.blog_author }}</li> -->
+					    </div>
 				    {% endfor %}
 				    </ul>
 				{% else %}
@@ -43,5 +48,8 @@
 			</div>
 		</div>
 	</div>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'blog/js/jquery-3.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

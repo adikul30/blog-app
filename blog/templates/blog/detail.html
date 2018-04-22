@@ -2,16 +2,20 @@
 <html>
 <head>
 	<title>{{ blog.blog_title }}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans:300">
+
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
 	<div class="container">
+		<br><br><br>
+		<h1 align="center" class = "title">{{ blog.blog_title }}</h1>
+		<br><br>
 
-		<h1 align="center" class="display-4">{{ blog.blog_title }}</h1>
-
-		<p>{{ blog.blog_content }}</p>
+		<p class="description">{{ blog.blog_content }}</p>
 
 		<p class="text-secondary">{{ blog.blog_author }}</p>
 	</div>

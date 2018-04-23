@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>blogger - the boring blog app</title>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans">
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/fonts/font-awesome/css/font-awesome.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+	<div id="header">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">blogger - the boring blog app</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
+
+		  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			    </ul>
+			    <form class="form-inline my-2 my-lg-0">
+			    	<a href="{% url 'blog:new' %}">
+			    		<button class="btn btn-outline-secondary my-2 my-sm-0" type="button">New blog</button>
+			    	</a>
+			    </form>
+			</div>
+		</nav>
+	</div>
+
+	<div id="body" class="container">
+		{% block content %}
+		
+		{% endblock content %}
+	</div>
+
+<!-- 	<div id="footer" class="sticky-footer">
+		<div class="container">footer
+		</div>
+	</div> -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <span class="text-muted">Made by Aditya Kulkarni.</span>
+        <a style="color: #757575;font-size: 24px;float: right;" href="https://github.com/adikul30"><i class="fa fa-github"></i></a>
+      </div>
+    </footer>
+	<script type="text/javascript" src="{% static 'blog/js/jquery-3.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

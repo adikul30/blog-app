@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>New Blog</title>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans:300">
+{% extends 'blog/master.html' %}
+{% load static %}
 
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<body>
-	<div class="container">
+{% block content %}
 		<br>
 		<h1>Start a new blog</h1>
 		<br>
@@ -37,5 +28,5 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+
+{% endblock content %}

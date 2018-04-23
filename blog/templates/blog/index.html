@@ -1,55 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>blogger - the boring blog app</title>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans">
+{% extends 'blog/master.html' %}
+{% load static %}
 
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">blogger - the boring blog app</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    	<span class="navbar-toggler-icon"></span>
-	  	</button>
-
-	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
+{% block content %}
+	<div>
+		<br>
+		<h1>All Blogs</h1>
+		<br>
+		{% if latest_blogs %}
+		    <ul class="list-group list-group-flush">
+		    {% for blog in latest_blogs %}
+		    	<div>
+			        <li class="list-group-item"><a href="{% url 'blog:detail' blog.id %}">{{ blog.blog_title }}</a></li>
+			        <!-- <li class="list-group-item">{{ blog.blog_author }}</li> -->
+			    </div>
+		    {% endfor %}
 		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
-		    	<a href="{% url 'blog:new' %}">
-		    		<button class="btn btn-outline-secondary my-2 my-sm-0" type="button">New blog</button>
-		    	</a>
-		    </form>
-		</div>
-	</nav>
-	<div class="container">
-		<div>
-			<div>
-				<br>
-				<h1>All Blogs</h1>
-				<br>
-				{% if latest_blogs %}
-				    <ul class="list-group list-group-flush">
-				    {% for blog in latest_blogs %}
-				    	<div>
-					        <li class="list-group-item"><a href="{% url 'blog:detail' blog.id %}">{{ blog.blog_title }}</a></li>
-					        <!-- <li class="list-group-item">{{ blog.blog_author }}</li> -->
-					    </div>
-				    {% endfor %}
-				    </ul>
-				{% else %}
-				    <p>No blogs are available.</p>
-				{% endif %}
-			</div>
-		</div>
+		{% else %}
+		    <p>No blogs are available.</p>
+		{% endif %}
 	</div>
-	{% load static %}
-	<script type="text/javascript" src="{% static 'blog/js/jquery-3.1.1.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
-</body>
-</html>
+{% endblock content %}

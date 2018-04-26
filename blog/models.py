@@ -8,7 +8,7 @@ class Blog(models.Model):
 	# 	super(Blog, self).__init__()
 	# 	self.arg = arg
 	blog_title = models.CharField(max_length=100)
-	blog_content = models.TextField(max_length=800)
+	blog_content = models.TextField(max_length=10000)
 	blog_author = models.CharField(max_length=50)
 	pub_date = models.DateTimeField('date published')
 

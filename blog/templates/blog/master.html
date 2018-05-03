@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>blogger - the boring blog app</title>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Product+Sans:300,400">
 
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
@@ -23,6 +23,15 @@
 			    <ul class="navbar-nav mr-auto">
 			    </ul>
 			    <form class="form-inline my-2 my-lg-0">
+			    	{% if not request.user.is_authenticated %}
+    					<a href="{% url 'blog:signUp' %}">
+    						<button class="btn btn-outline-light my-2 my-sm-0" type="button">Sign Up</button>
+    					</a>
+    				{% else %}
+    					<a href="{% url 'blog:logoutUser' %}">
+    						<button class="btn btn-outline-light my-2 my-sm-0" type="button">Logout</button>
+    					</a>
+    				{% endif %}
 			    	<a href="{% url 'blog:new' %}">
 			    		<button class="btn btn-outline-light my-2 my-sm-0" type="button">New blog</button>
 			    	</a>

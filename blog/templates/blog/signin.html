@@ -1,0 +1,28 @@
+{% extends 'blog/master.html' %}
+{% load static %}
+
+{% block content %}
+		<br>
+		<h1>Sign in to blogger</h1>
+		<br>
+		<div class="card">
+			<div class="card-body">
+				<form action="{% url 'blog:signIn' %}" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="email">Username</label>
+						<input class="form-control" type="text" name="username" id="username">
+					</div>
+					<div class="form-group">
+						<label for="content">Password</label>
+						<input class="form-control" type="password" name="password" id="password">
+					</div>
+					<div align="center">
+						<input type="submit" class="btn btn-primary" value="Sign In">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

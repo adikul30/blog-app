@@ -88,6 +88,7 @@ def updateBlog(request, blog_id):
 		current_user = request.user
 		author = current_user.username
 		if len(title) != 0 and len(content) != 0:
+			print("inside if")
 			updated_blog = Blog.objects.get(pk = blog_id)
 			updated_blog.blog_title = title
 			updated_blog.blog_content = content
@@ -101,6 +102,8 @@ def deleteBlog(request, blog_id):
 			blog_to_delete = Blog.objects.get(pk = blog_id)
 			blog_to_delete.delete()
 			return HttpResponseRedirect(reverse('blog:index'))
+		else :
+			return render(request, 'blog/detail.html', {'blog' : blog,})
 
 
 

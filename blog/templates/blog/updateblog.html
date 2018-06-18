@@ -1,0 +1,29 @@
+{% extends 'blog/master.html' %}
+{% load static %}
+
+{% block content %}
+		<br>
+		<h1>Update blog ?</h1>
+		<br>
+		<div class="card">
+			<div class="card-body">
+				<form action="{% url 'blog:updateBlog' %}" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input class="form-control" type="text" name="title" id="title" placeholder="{{ blog.blog_title }}">
+					</div>
+					<div class="form-group">
+						<label for="content">Content</label>
+						<input class="form-control" type="text" height="200px" name="content" id="content" placeholder="{{ blog.blog_content }}">
+					</div>
+
+					<div align="center">
+						<input type="submit" class="btn btn-primary btn-lg" value="Update">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

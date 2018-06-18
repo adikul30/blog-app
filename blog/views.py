@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 def index(request):
-	latest_blogs = Blog.objects.order_by('-pub_date')[:5]
+	latest_blogs = Blog.objects.order_by('-pub_date')
 	context = {'latest_blogs': latest_blogs}
 	return render(request, 'blog/index.html', context)
 
@@ -22,10 +22,12 @@ def new(request):
 		else:
 			return render(request,'blog/new.html',{})
 	elif request.method == 'POST':
+		print("new ke POST mein")
 		title = request.POST.get("title","")
 		content = request.POST.get("content","")
-		author = request.POST.get("author","")
-		if len(title) != 0 and len(author) != 0 and len(content) != 0:
+		current_user = request.user
+		author = current_user.username
+		if len(title) != 0 and len(content) != 0:
 			new_blog = Blog(blog_title = title, blog_content = content, blog_author = author, pub_date=timezone.now())
 			new_blog.save()
 			return HttpResponseRedirect(reverse('blog:detail', args = (new_blog.id,)))
@@ -71,6 +73,34 @@ def signIn(request):
 		else:						# incorrect input
 			return render(request,'blog/signin.html',{})
 
+def updateBlog(request, blog_id):
+	blog = get_object_or_404(Blog, pk = blog_id)
+	if request.method == "GET":
+		if blog.blog_author == request.user.username:
+			print(blog.id)
+			return render(request,'blog/updateblog.html', {'blog' : blog,})
+		else :
+			return render(request, 'blog/detail.html', {'blog' : blog,})
+	elif request.method == 'POST':
+		print("update ke POST mein")
+		title = request.POST.get("title","")
+		content = request.POST.get("content","")
+		current_user = request.user
+		author = current_user.username
+		if len(title) != 0 and len(content) != 0:
+			updated_blog = Blog.objects.get(pk = blog_id)
+			updated_blog.blog_title = title
+			updated_blog.blog_content = content
+			updated_blog.save()
+			return HttpResponseRedirect(reverse('blog:detail', args = (updated_blog.id,)))
+
+def deleteBlog(request, blog_id):
+	blog = get_object_or_404(Blog, pk = blog_id)
+	if request.method == "GET":
+		if blog.blog_author == request.user.username:
+			blog_to_delete = Blog.objects.get(pk = blog_id)
+			blog_to_delete.delete()
+			return HttpResponseRedirect(reverse('blog:index'))
 
 
 

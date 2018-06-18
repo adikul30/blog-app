@@ -7,6 +7,9 @@
 		<br><br>
 
 		<p class="description">{{ blog.blog_content }}</p>
-
 		<p class="text-secondary author">{{ blog.blog_author }}</p>
+		<div>
+			<a style="color: #757575;font-size: 16px;float: right;" href="{% url 'blog:updateBlog' blog.id %}"><i class="fa fa-pencil"></i></a>
+			<a style="color: #757575;font-size: 16px;float: right;" href="{% url 'blog:deleteBlog' blog.id %}"><i class="fa fa-trash"></i></a>
+		</div>
 {% endblock content %}

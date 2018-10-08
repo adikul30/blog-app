@@ -6,6 +6,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django.views.generic import ListView, DetailView
+
+class BlogList(ListView):
+	model = Blog
+
+class BlogDetail(DetailView):
+	model = Blog	
+
 def index(request):
 	latest_blogs = Blog.objects.order_by('-pub_date')
 	context = {'latest_blogs': latest_blogs}

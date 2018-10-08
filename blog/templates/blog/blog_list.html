@@ -1,0 +1,22 @@
+{% extends 'blog/master.html' %}
+{% load static %}
+
+{% block content %}
+	<div>
+		<br>
+		<h1>All Blogs</h1>
+		<br>
+		{% if object_list %}
+		    <ul class="list-group list-group-flush">
+		    {% for blog in object_list %}
+		    	<div>
+			        <li class="list-group-item"><a href="{% url 'blog:detail' blog.id %}">{{ blog.blog_title }}</a></li>
+			        <!-- <li class="list-group-item">{{ blog.blog_author }}</li> -->
+			    </div>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No blogs are available.</p>
+		{% endif %}
+	</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'blog/master.html' %}
+{% load static %}
+
+{% block content %}
+		<br><br><br>
+		<h1 align="center" class = "title">{{ object.blog_title }}</h1>
+		<br><br>
+
+		<p class="description">{{ object.blog_content }}</p>
+		<p class="text-secondary author">{{ object.blog_author }}</p>
+		<div>
+			<a style="color: #757575;font-size: 16px;float: right;" href="{% url 'blog:updateBlog' object.id %}"><i class="fa fa-pencil"></i></a>
+			<a style="color: #757575;font-size: 16px;float: right;" href="{% url 'blog:deleteBlog' object.id %}"><i class="fa fa-trash"></i></a>
+		</div>
+{% endblock content %}

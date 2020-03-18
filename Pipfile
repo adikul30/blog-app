@@ -11,7 +11,7 @@ name = "pypi"
 
 [packages]
 
-django = "==2.0.4"
+django = "==2.2.10"
 pytz = "==2018.4"
 gunicorn = "*"
 whitenoise = "*"
